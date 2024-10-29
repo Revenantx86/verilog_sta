@@ -1,10 +1,10 @@
 read_liberty pdk_files/sky130_fd_sc_hd__tt_025C_1v80.lib
 read_verilog  src/tt_um_revenantx86_tinytpu.v
 link_design tt_um_revenantx86_tinytpu
-read_spef src/tt_um_revenantx86_tinytpu.nom.spef
+read_spef src/tt_um_revenantx86_tinytpu.max.spef
 
 
-create_clock -name clk -period 10 {clk}
+create_clock -name clk -period 6 {clk}
 
 set_clock_uncertainty 0.1 [all_clocks]
 set_clock_transition  0.1 [all_clocks]
@@ -29,7 +29,6 @@ report_clock_skew -hold
 report_annotated_check -hold
 
 report_parasitic_annotation -report_unannotated
-
 
 report_checks -path_delay min -format full_clock_expanded 
 
